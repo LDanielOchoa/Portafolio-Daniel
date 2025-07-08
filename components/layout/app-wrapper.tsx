@@ -2,14 +2,16 @@
 
 import type React from "react"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, lazy, Suspense } from "react"
 import { LanguageProvider } from "../features/language-context"
 import { ThemeProvider } from "./theme-provider"
 import { Preloader } from "../features/preloader"
 import { ScrollProgress } from "../features/scroll-progress"
 import { AnimatedBackground } from "../animations/animated-background"
 import CustomCursor from "../features/custom-cursor"
-import { FloatingAction } from "../cards/floating-action"
+
+// Lazy load heavy components
+const FloatingAction = lazy(() => import("../cards/floating-action").then(mod => ({ default: mod.FloatingAction })))
 
 interface AppWrapperProps {
   children: React.ReactNode
@@ -27,10 +29,10 @@ export default function AppWrapper({ children }: AppWrapperProps) {
   useEffect(() => {
     setMounted(true)
 
-    // Simulate loading time
+    // Reduced loading time for better UX
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 1500)
+    }, 800) // Reduced from 1500ms to 800ms
 
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 500)
@@ -56,7 +58,9 @@ export default function AppWrapper({ children }: AppWrapperProps) {
             <ScrollProgress />
             <AnimatedBackground />
             <CustomCursor />
-            <FloatingAction showScrollTop={showScrollTop} scrollToTop={scrollToTop} />
+            <Suspense fallback={null}>
+              <FloatingAction showScrollTop={showScrollTop} scrollToTop={scrollToTop} />
+            </Suspense>
             {children}
           </>
         )}
