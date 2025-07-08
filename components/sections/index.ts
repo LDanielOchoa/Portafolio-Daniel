@@ -1,0 +1,9 @@
+export { default as TestimonialSection } from './testimonial-section';
+export { default as ProjectSection } from './project-section';
+export { default as AboutSection } from './about-section';
+export { default as HeroSection } from './hero-section';
+export { default as ServicesSection } from './services-section';
+export { default as SkillsSection } from './skills-section';
+export { default as ContactSection } from './contact-section';
+export { default as ExperienceSection } from './experience-section';
+export { default as BlogSection } from './blog-section'; 

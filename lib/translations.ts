@@ -1,0 +1,237 @@
+export const translations = {
+  en: {
+    navigation: {
+      home: "Home",
+      about: "About",
+      projects: "Projects",
+      testimonials: "Testimonials",
+      experience: "Experience",
+      blog: "Blog",
+      contact: "Contact",
+    },
+    hero: {
+      title: "Hi, I'm ",
+      name: "Daniel Ochoa",
+      role: "Full-Stack Developer & Designer UI/UX ",
+      description:
+        "I'm a developer who combines creative vision with exceptional technical skills. My passion for innovation and attention to detail allows me to create digital experiences that make a difference. I excel at understanding user needs and transforming them into elegant and effective solutions.",
+      cta: "View My Work",
+      contact: "Contact Me",
+      scrollDown: "Scroll Down",
+    },
+    about: {
+      title: "About Me",
+      subtitle: "Who am I?",
+      paragraph1:
+        "I'm a frontend developer passionate about creating intuitive and efficient user experiences. With a strong foundation in modern web technologies, I build applications that are both functional and user-friendly.",
+      paragraph2:
+        "My expertise includes Next.js, TypeScript, TailwindCSS, and database integration. I specialize in developing enterprise-level applications with a focus on performance, accessibility, and clean code practices.",
+      experience: "Months Experience",
+      projects: "Projects Completed",
+      clients: "Satisfied Clients",
+      satisfaction: "Satisfaction Rate",
+      available: "Available for new projects",
+      downloadCv: "Download CV",
+      techStack: "Technologies I Work With",
+      workImages: "Work & Process",
+      services: "My Services",
+      techCategories: {
+        all: "All",
+        languages: "Languages",
+        frontend: "Frontend",
+        backend: "Backend & DB",
+        devops: "DevOps & Cloud",
+        monitoring: "Monitoring",
+        tools: "Tools",
+        os: "OS"
+      }
+    },
+    projects: {
+      title: "My Projects",
+      description:
+        "A selection of my most recent work. Each project represents unique challenges that I've approached with technical expertise and attention to user experience.",
+      projectDescription:
+        "A brief description of the project, highlighting the technologies used and the challenges overcome.",
+      viewMore: "View More Projects",
+    },
+    testimonials: {
+      title: "Testimonials",
+      description: "What my clients say about my work and collaboration experience.",
+    },
+    experience: {
+      title: "Experience",
+      description: "My professional journey and career milestones.",
+    },
+    blog: {
+      title: "Latest Articles",
+      description: "Thoughts, insights, and updates from my journey as a developer and designer.",
+      viewMore: "View All Articles",
+    },
+    contact: {
+      title: "Get In Touch",
+      description: "Have a project in mind? Let's work together to create something amazing.",
+      getInTouch: "Contact Information",
+      contactText:
+        "Feel free to reach out if you're looking for a developer, have a question, or just want to connect.",
+      email: "Email",
+      location: "Location",
+      socials: "Social Profiles",
+      name: "Name",
+      namePlaceholder: "Your name",
+      emailPlaceholder: "Your email",
+      subject: "Subject",
+      subjectPlaceholder: "Project inquiry",
+      message: "Message",
+      messagePlaceholder: "Tell me about your project...",
+      submit: "Send Message",
+    },
+    footer: {
+      copyright: "All rights reserved.",
+      privacy: "Privacy Policy",
+      terms: "Terms of Service",
+    },
+    search: {
+      placeholder: "Search for projects, skills, or content...",
+      noResults: "No results found. Try a different search term.",
+      navigate: "to navigate",
+      close: "to close",
+      title: "Search",
+    },
+    commandMenu: {
+      title: "Command Menu",
+      placeholder: "Type a command or search...",
+      sections: "Sections",
+      theme: "Theme",
+      language: "Language",
+      dark: "Dark",
+      light: "Light",
+      system: "System",
+      english: "English",
+      spanish: "Spanish",
+    },
+    sidebar: {
+      navigation: "Navigation",
+      connect: "Connect",
+      theme: "Theme",
+      language: "Language",
+      downloadCV: "Download CV",
+    },
+  },
+  es: {
+    navigation: {
+      home: "Inicio",
+      about: "Sobre Mí",
+      projects: "Proyectos",
+      testimonials: "Testimonios",
+      experience: "Experiencia",
+      blog: "Blog",
+      contact: "Contacto",
+    },
+    hero: {
+      greeting: "Bienvenido a mi portafolio",
+      title: "Hola, soy ",
+      name: "Daniel Ochoa",
+      role: "Desarrollador Full-Stack & Desarrollador UI/UX",
+      description:
+        "Soy un desarrollador que combina visión creativa con habilidades técnicas excepcionales. Mi pasión por la innovación y la atención al detalle me permite crear experiencias digitales que marcan la diferencia. Me destaco por mi capacidad para entender las necesidades de los usuarios y transformarlas en soluciones elegantes y efectivas.",
+      cta: "Ver Mi Trabajo",
+      contact: "Contáctame",
+      scrollDown: "Desplázate",
+    },
+    about: {
+      title: "Sobre Mí",
+      subtitle: "¿Quién soy?",
+      paragraph1:
+        "Soy un desarrollador frontend apasionado por crear experiencias de usuario intuitivas y eficientes. Con una sólida base en tecnologías web modernas, construyo aplicaciones que son tanto funcionales como fáciles de usar.",
+      paragraph2:
+        "Mi experiencia incluye Next.js, TypeScript, TailwindCSS e integración con bases de datos. Me especializo en desarrollar aplicaciones empresariales con un enfoque en rendimiento, accesibilidad y prácticas de código limpio.",
+      experience: "Meses de Experiencia",
+      projects: "Proyectos Completados",
+      clients: "Clientes Satisfechos",
+      satisfaction: "Tasa de Satisfacción",
+      available: "Disponible para nuevos proyectos",
+      downloadCv: "Descargar CV",
+      workImages: "Trabajo y Proceso",
+      services: "Mis Servicios",
+      techCategories: {
+        all: "Todas",
+        languages: "Lenguajes",
+        frontend: "Frontend",
+        backend: "Backend & BD",
+        devops: "DevOps & Cloud",
+        monitoring: "Monitoreo",
+        tools: "Herramientas",
+        os: "Sistemas Operativos"
+      }
+    },
+    projects: {
+      title: "Mis Proyectos",
+      description:
+        "Una selección de mis trabajos más recientes. Cada proyecto representa desafíos únicos que he abordado con experiencia técnica y atención a la experiencia del usuario.",
+      projectDescription:
+        "Una breve descripción del proyecto, destacando las tecnologías utilizadas y los desafíos superados.",
+      viewMore: "Ver Más Proyectos",
+    },
+    testimonials: {
+      title: "Testimonios",
+      description: "Lo que mis clientes dicen sobre mi trabajo y experiencia de colaboración.",
+    },
+    experience: {
+      title: "Experiencia",
+      description: "Mi trayectoria profesional y logros en mi carrera.",
+    },
+    blog: {
+      title: "Últimos Artículos",
+      description: "Pensamientos, ideas y actualizaciones de mi viaje como desarrollador y diseñador.",
+      viewMore: "Ver Todos los Artículos",
+    },
+    contact: {
+      title: "Ponte en Contacto",
+      description: "¿Tienes un proyecto en mente? Trabajemos juntos para crear algo increíble.",
+      getInTouch: "Información de Contacto",
+      contactText:
+        "No dudes en contactarme si estás buscando un desarrollador, tienes una pregunta o simplemente quieres conectar.",
+      email: "Correo",
+      location: "Ubicación",
+      socials: "Perfiles Sociales",
+      name: "Nombre",
+      namePlaceholder: "Tu nombre",
+      emailPlaceholder: "Tu correo",
+      subject: "Asunto",
+      subjectPlaceholder: "Consulta de proyecto",
+      message: "Mensaje",
+      messagePlaceholder: "Cuéntame sobre tu proyecto...",
+      submit: "Enviar Mensaje",
+    },
+    footer: {
+      copyright: "Todos los derechos reservados.",
+      privacy: "Política de Privacidad",
+      terms: "Términos de Servicio",
+    },
+    search: {
+      placeholder: "Buscar proyectos, habilidades o contenido...",
+      noResults: "No se encontraron resultados. Intenta con un término diferente.",
+      navigate: "para navegar",
+      close: "para cerrar",
+      title: "Buscar",
+    },
+    commandMenu: {
+      title: "Menú de Comandos",
+      placeholder: "Escribe un comando o busca...",
+      sections: "Secciones",
+      theme: "Tema",
+      language: "Idioma",
+      dark: "Oscuro",
+      light: "Claro",
+      system: "Sistema",
+      english: "Español",
+    },
+    sidebar: {
+      navigation: "Navegación",
+      connect: "Conectar",
+      theme: "Tema",
+      language: "Idioma",
+      downloadCV: "Descargar CV",
+    },
+  },
+}

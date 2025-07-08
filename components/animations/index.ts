@@ -1,0 +1,15 @@
+export { default as AnimatedLogo } from './animated-logo';
+export { default as AnimatedNavItem } from './animated-nav-item';
+export { default as FloatingShapes } from './floating-shapes';
+export { default as AnimatedGradientText } from './animated-gradient-text';
+export { default as Background3D } from './3d-background';
+export { default as AnimatedBackground } from './animated-background';
+export { default as HeroCanvas } from './hero-canvas';
+export { default as BackgroundEffect } from './background-effect';
+export { default as FloatingParticles } from './floating-particles';
+export { default as BackgroundGradient } from './background-gradient';
+export { default as TextReveal } from './text-reveal';
+export { default as InteractiveBackground } from './interactive-background';
+export { default as ParallaxSection } from './parallax-section';
+export { default as AnimatedText } from './animated-text';
+export { default as FramerAnimations } from './framer-animations'; 
