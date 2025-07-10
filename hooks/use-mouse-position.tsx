@@ -1,26 +1,30 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 
-interface MousePosition {
-  x: number
-  y: number
-}
-
-export function useMousePosition(): MousePosition {
-  const [mousePosition, setMousePosition] = useState<MousePosition>({ x: 0, y: 0 })
+export function useMousePosition() {
+  const ref = useRef<HTMLElement>(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-    }
+    if (!ref.current) return;
 
-    window.addEventListener("mousemove", updateMousePosition)
+    const handleMouseMove = (event: MouseEvent) => {
+      const rect = ref.current?.getBoundingClientRect();
+      if (rect) {
+        setPosition({
+          x: event.clientX - rect.left,
+          y: event.clientY - rect.top,
+        });
+    }
+    };
+
+    ref.current.addEventListener('mousemove', handleMouseMove);
 
     return () => {
-      window.removeEventListener("mousemove", updateMousePosition)
-    }
-  }, [])
+      ref.current?.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
 
-  return mousePosition
+  return { ...position, ref };
 }

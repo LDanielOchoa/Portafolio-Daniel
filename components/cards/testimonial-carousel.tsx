@@ -1,167 +1,195 @@
 "use client"
 
-import { useRef, useEffect } from "react"
-import { motion } from "framer-motion"
-import { Quote } from "lucide-react"
+import { motion, useAnimation } from "framer-motion"
 import Image from "next/image"
+import { useState, useEffect, useCallback } from "react"
 
-interface TestimonialProps {
-  language: string
-}
-
-export function TestimonialCarousel({ language }: TestimonialProps) {
-  const testimonials = [
-    {
-      id: 1,
-      name: language === "en" ? "John Smith" : "Juan Pérez",
-      role: language === "en" ? "CEO at TechCorp" : "CEO en TechCorp",
-      image: "/testimonial-1.png",
-      text:
-        language === "en"
-          ? "Working with this developer was an absolute pleasure. Their attention to detail and creative approach to problem-solving resulted in a website that exceeded our expectations."
-          : "Trabajar con este desarrollador fue un placer absoluto. Su atención al detalle y enfoque creativo para resolver problemas resultó en un sitio web que superó nuestras expectativas.",
-    },
-    {
-      id: 2,
-      name: language === "en" ? "Sarah Johnson" : "Sara Jiménez",
-      role: language === "en" ? "Marketing Director" : "Directora de Marketing",
-      image: "/testimonial-2.png",
-      text:
-        language === "en"
-          ? "The portfolio website created for our company perfectly captures our brand essence. The animations and interactive elements have significantly increased user engagement."
-          : "El sitio web de portafolio creado para nuestra empresa captura perfectamente la esencia de nuestra marca. Las animaciones y elementos interactivos han aumentado significativamente la participación de los usuarios.",
-    },
-    {
-      id: 3,
-      name: language === "en" ? "Michael Brown" : "Miguel Moreno",
-      role: language === "en" ? "Startup Founder" : "Fundador de Startup",
-      image: "/testimonial-3.png",
-      text:
-        language === "en"
-          ? "I was impressed by the level of creativity and technical expertise. The website not only looks stunning but also performs exceptionally well. The attention to performance optimization made a huge difference."
-          : "Quedé impresionado por el nivel de creatividad y experiencia técnica. El sitio web no solo se ve impresionante sino que también funciona excepcionalmente bien. La atención a la optimización del rendimiento marcó una gran diferencia.",
-    },
-    {
-      id: 4,
-      name: language === "en" ? "Emily Davis" : "Emma Díaz",
-      role: language === "en" ? "Product Manager" : "Gerente de Producto",
-      image: "/testimonial-4.png",
-      text:
-        language === "en"
-          ? "The collaboration was seamless and the results speak for themselves. The website is not only beautiful but also highly functional and user-friendly."
-          : "La colaboración fue perfecta y los resultados hablan por sí mismos. El sitio web no solo es hermoso sino también altamente funcional y fácil de usar.",
-    },
-  ]
-
-  // Duplicar los testimonios para el efecto de desplazamiento infinito
-  const allTestimonials = [...testimonials, ...testimonials]
-  
-  const carouselRef = useRef<HTMLDivElement>(null)
+const usePrefersReducedMotion = () => {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   
   useEffect(() => {
-    const resetPosition = () => {
-      if (carouselRef.current) {
-        const carousel = carouselRef.current
-        if (carousel.scrollLeft >= carousel.scrollWidth / 2) {
-          carousel.scrollLeft = 0
-        } else if (carousel.scrollLeft <= 0) {
-          carousel.scrollLeft = carousel.scrollWidth / 2
-        }
-      }
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
+    setPrefersReducedMotion(mediaQuery.matches)
+
+    const handleChange = () => {
+      setPrefersReducedMotion(mediaQuery.matches)
     }
-    
-    const carousel = carouselRef.current
-    if (carousel) {
-      carousel.addEventListener('scroll', resetPosition)
-      return () => carousel.removeEventListener('scroll', resetPosition)
+
+    mediaQuery.addEventListener("change", handleChange)
+    return () => mediaQuery.removeEventListener("change", handleChange)
+  }, [])
+  
+  return prefersReducedMotion
+}
+
+const testimonialsData = {
+  en: [
+    {
+      name: "Alex Johnson",
+      title: "CTO, Innovate Inc.",
+      quote: "Daniel is a proactive and highly skilled developer. His ability to tackle complex problems was instrumental in our project's success. A true asset to any team.",
+      image: "/placeholder-user.jpg",
+    },
+    {
+      name: "Samantha Lee",
+      title: "Product Manager, Tech Solutions",
+      quote: "Working with Daniel was a fantastic experience. He consistently delivered high-quality code, showed great initiative, and his communication skills are excellent.",
+      image: "/placeholder-user.jpg",
+    },
+    {
+      name: "Mike Chen",
+      title: "Lead Engineer, Data Corp.",
+      quote: "Daniel's expertise in backend systems and automation significantly improved our infrastructure. His dedication and problem-solving abilities are top-notch.",
+      image: "/placeholder-user.jpg",
+    },
+    {
+      name: "Isabella Rossi",
+      title: "UX Lead, Creative Minds",
+      quote: "The collaboration was seamless. Daniel has a keen eye for design and user experience, which is a rare and valuable combination in a developer.",
+      image: "/placeholder-user.jpg",
+    },
+  ],
+  es: [
+    {
+      name: "Alex Johnson",
+      title: "CTO, Innovate Inc.",
+      quote: "Daniel es un desarrollador proactivo y altamente cualificado. Su habilidad para abordar problemas complejos fue fundamental para el éxito de nuestro proyecto. Un verdadero activo para cualquier equipo.",
+      image: "/placeholder-user.jpg",
+    },
+    {
+      name: "Samantha Lee",
+      title: "Gerente de Producto, Tech Solutions",
+      quote: "Trabajar con Daniel fue una experiencia fantástica. Entregó código de alta calidad de manera consistente, mostró gran iniciativa y sus habilidades de comunicación son excelentes.",
+      image: "/placeholder-user.jpg",
+    },
+    {
+      name: "Mike Chen",
+      title: "Ingeniero Principal, Data Corp.",
+      quote: "La experiencia de Daniel en sistemas de backend y automatización mejoró significativamente nuestra infraestructura. Su dedicación y capacidad para resolver problemas son de primer nivel.",
+      image: "/placeholder-user.jpg",
+    },
+    {
+      name: "Isabella Rossi",
+      title: "Líder UX, Mentes Creativas",
+      quote: "La colaboración fue perfecta. Daniel tiene un gran ojo para el diseño y la experiencia de usuario, lo cual es una combinación rara y valiosa en un desarrollador.",
+      image: "/placeholder-user.jpg",
+    },
+  ],
+}
+
+interface TestimonialCarouselProps {
+  language: "en" | "es"
+}
+
+export function TestimonialCarousel({ language }: TestimonialCarouselProps) {
+  const testimonials = testimonialsData[language]
+  const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials] // Triple for smoother loop
+  const controls = useAnimation()
+  const prefersReducedMotion = usePrefersReducedMotion()
+
+  // Optimized animation speeds - faster for mobile, slower for desktop
+  const getAnimationDuration = useCallback(() => {
+    if (typeof window !== 'undefined') {
+      const isMobile = window.innerWidth < 768
+      return isMobile ? 25 : 50 // Faster on mobile (25s), slower on desktop (50s)
     }
+    return 50
   }, [])
 
+  const startAnimation = useCallback(() => {
+    if (!prefersReducedMotion) {
+      controls.start({
+        x: "-33.333%", // Move one third since we have 3 copies
+        transition: {
+          duration: getAnimationDuration(),
+          ease: "linear",
+          repeat: Infinity,
+          repeatType: "loop",
+        },
+      })
+    }
+  }, [controls, prefersReducedMotion, getAnimationDuration])
+  
+  useEffect(() => {
+    startAnimation()
+  }, [startAnimation])
+
+  // Handle window resize for responsive animation speed
+  useEffect(() => {
+    const handleResize = () => {
+      startAnimation()
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [startAnimation])
+
+  if (prefersReducedMotion) {
+    return (
+      <div className="w-full overflow-hidden">
+        <div className="flex gap-6 md:gap-8 overflow-x-auto pb-4 scrollbar-hide">
+          {testimonials.map((testimonial, index) => (
+            <div key={index} className="flex-shrink-0 w-[280px] md:w-[400px]">
+              <div className="relative h-full p-6 md:p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                <p className="text-sm md:text-base text-gray-300 italic leading-relaxed">
+                  "{testimonial.quote}"
+                </p>
+                <div className="mt-6 flex items-center gap-4">
+                  <Image
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    width={48}
+                    height={48}
+                    className="rounded-full object-cover"
+                  />
+                  <div>
+                    <p className="font-bold text-white text-sm md:text-base">{testimonial.name}</p>
+                    <p className="text-xs md:text-sm text-gray-400">{testimonial.title}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
   return (
-    <div className="w-full overflow-hidden py-8">
+    <div className="relative w-full overflow-hidden">
+      {/* Fading Edges */}
+      <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-8 md:w-16 bg-gradient-to-r from-background to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-8 md:w-16 bg-gradient-to-l from-background to-transparent" />
+
       <motion.div 
-        className="flex items-center justify-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
+        className="flex gap-6 md:gap-8"
+        animate={controls}
+        initial={{ x: 0 }}
+        style={{ width: "300%" }} // 3x width for triple duplication
       >
-        {/* Carrusel con desplazamiento infinito */}
-        <div 
-          ref={carouselRef}
-          className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide py-8 px-4 w-full max-w-7xl"
-          style={{
-            scrollBehavior: 'smooth',
-            WebkitOverflowScrolling: 'touch',
-            scrollbarWidth: 'none',
-            msOverflowStyle: 'none'
-          }}
-        >
-          {/* Contenedor con animación automática */}
-          <motion.div 
-            className="flex gap-8 flex-nowrap"
-            animate={{ x: ["-5%", "-55%"] }}
-            transition={{ 
-              x: {
-                repeat: Infinity,
-                repeatType: "reverse",
-                duration: 40,
-                ease: "linear",
-              }
-            }}
-          >
-            {allTestimonials.map((testimonial, index) => {
-              // Usar un solo color base para todos los testimonios con ligeras variaciones
-              const opacity = (index % 2 === 0) ? "10" : "15";
-              
-              return (
-                <motion.div
-                  key={`${testimonial.id}-${index}`}
-                  className={`flex-shrink-0 w-[350px] md:w-[400px] snap-center p-6 backdrop-blur-sm shadow-lg bg-gradient-to-b from-purple-600/${opacity} to-transparent rounded-[30px] border-0`}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  style={{
-                    backdropFilter: 'blur(8px)',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
-                  }}
-                >
-                  <div className="flex flex-col h-full">
-                    <div className="mb-4 flex items-center">
-                      <div className="relative w-16 h-16 rounded-full overflow-hidden mr-4 flex-shrink-0 bg-gradient-to-br from-purple-600/30 to-indigo-600/30 p-0.5">
-                        <div className="absolute inset-0 rounded-full overflow-hidden">
+        {duplicatedTestimonials.map((testimonial, index) => (
+          <div key={index} className="flex-shrink-0 w-[280px] md:w-[400px]">
+            <div className="relative h-full p-6 md:p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+              <p className="text-sm md:text-base text-gray-300 italic leading-relaxed">
+                "{testimonial.quote}"
+              </p>
+              <div className="mt-6 flex items-center gap-4">
                           <Image
-                            src={testimonial.image || `/avatar-${index % 4 + 1}.png`}
+                  src={testimonial.image}
                             alt={testimonial.name}
-                            fill
-                            className="object-cover"
+                  width={48}
+                  height={48}
+                  className="rounded-full object-cover"
                           />
-                        </div>
-                      </div>
                       <div>
-                        <h4 className="font-bold text-lg">{testimonial.name}</h4>
-                        <p className="text-sm text-foreground/70">{testimonial.role}</p>
+                  <p className="font-bold text-white text-sm md:text-base">{testimonial.name}</p>
+                  <p className="text-xs md:text-sm text-gray-400">{testimonial.title}</p>
                       </div>
                     </div>
-                    
-                    <div className="flex-1 relative">
-                      <Quote className="absolute top-0 left-0 w-8 h-8 text-purple-600/30 -translate-x-2 -translate-y-2" />
-                      <p className="text-foreground/90 leading-relaxed text-sm md:text-base pl-4">
-                        {testimonial.text}
-                      </p>
                     </div>
                   </div>
-                </motion.div>
-              );
-            })}
-          
-          </motion.div>
-        </div>
+        ))}
       </motion.div>
-      
-      <style jsx global>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
     </div>
   )
 }

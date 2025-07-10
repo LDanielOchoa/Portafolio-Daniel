@@ -5,10 +5,10 @@ import { motion, AnimatePresence } from "framer-motion"
 import { useTheme } from "next-themes"
 import { AnimatedNavItem } from "../animations/animated-nav-item"
 import { CommandMenu } from "../features/command-menu"
-import { SearchDialog } from "../features/search-dialog"
 import { SidebarNavigation } from "./sidebar-navigation"
 import { Button } from "@/components/ui/button"
-import { Moon, Sun, Search, Menu, Languages, Command, Github } from "lucide-react"
+import { Moon, Sun, Languages, Command, Github } from "lucide-react"
+import { AnimatedMenuIcon } from "./animated-menu-icon"
 
 interface HeaderProps {
   activeSection: string
@@ -22,7 +22,6 @@ interface HeaderProps {
 export function Header({ activeSection, handleScroll, toggleLanguage, language, sections, t }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false)
   const [commandOpen, setCommandOpen] = useState(false)
-  const [searchOpen, setSearchOpen] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { theme, setTheme } = useTheme()
 
@@ -38,7 +37,6 @@ export function Header({ activeSection, handleScroll, toggleLanguage, language, 
   return (
     <>
       <CommandMenu open={commandOpen} setOpen={setCommandOpen} handleScroll={handleScroll} />
-      <SearchDialog open={searchOpen} setOpen={setSearchOpen} handleScroll={handleScroll} />
 
       {/* Mobile Sidebar */}
       <SidebarNavigation
@@ -103,17 +101,13 @@ export function Header({ activeSection, handleScroll, toggleLanguage, language, 
                   transition={{ duration: 0.6, type: "spring" }}
                 >
                   {/* Mobile Menu Trigger */}
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="md:hidden relative overflow-hidden group"
-                      onClick={() => setMobileMenuOpen(true)}
-                    >
-                      <span className="absolute inset-0 bg-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
-                      <Menu className="h-5 w-5 relative z-10 transition-transform duration-300 group-hover:text-purple-600" />
-                    </Button>
-                  </motion.div>
+                  <div className="md:hidden">
+                    <AnimatedMenuIcon
+                      isOpen={mobileMenuOpen}
+                      onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                      className="relative group flex items-center justify-center h-9 w-9 text-foreground/80 hover:text-purple-600"
+                    />
+                  </div>
                 </motion.div>
 
                 {/* Desktop Navigation */}
@@ -149,19 +143,6 @@ export function Header({ activeSection, handleScroll, toggleLanguage, language, 
                     >
                       <span className="absolute inset-0 bg-gradient-to-tr from-purple-600/10 to-indigo-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
                       <Github className="h-5 w-5 relative z-10 transition-transform duration-300 group-hover:text-purple-600 group-hover:scale-110" />
-                    </Button>
-                  </motion.div>
-
-                  {/* Search Button */}
-                  <motion.div whileHover={{ scale: 1.1, rotate: 5 }} whileTap={{ scale: 0.9 }}>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => setSearchOpen(true)}
-                      className="relative overflow-hidden group"
-                    >
-                      <span className="absolute inset-0 bg-gradient-to-tr from-purple-600/10 to-indigo-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
-                      <Search className="h-5 w-5 relative z-10 transition-transform duration-300 group-hover:text-purple-600 group-hover:scale-110" />
                     </Button>
                   </motion.div>
 

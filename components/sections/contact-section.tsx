@@ -120,7 +120,7 @@ export function ContactSection({ t }: ContactSectionProps) {
                   </div>
                   <div>
                     <h4 className="font-medium mb-1 font-serif">{t.contact.location}</h4>
-                    <p className="text-foreground/70 font-body">México</p>
+                    <p className="text-foreground/70 font-body">Colombia, Medellín</p>
                   </div>
                 </div>
               </div>
@@ -138,49 +138,17 @@ export function ContactSection({ t }: ContactSectionProps) {
                   <Github className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/danielochoaa"
                   target="_blank"
                   rel="noreferrer"
                   className="w-12 h-12 rounded-full bg-foreground/5 backdrop-blur-sm border border-foreground/10 flex items-center justify-center hover:bg-purple-600/10 hover:border-purple-600/50 transition-colors"
                 >
                   <Linkedin className="w-5 h-5" />
                 </a>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-12 h-12 rounded-full bg-foreground/5 backdrop-blur-sm border border-foreground/10 flex items-center justify-center hover:bg-purple-600/10 hover:border-purple-600/50 transition-colors"
-                >
-                  <Twitter className="w-5 h-5" />
-                </a>
               </div>
             </div>
 
-            {/* Contact card with animated border */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="relative p-1 rounded-xl overflow-hidden mt-8 hidden md:block"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-indigo-400 animate-gradient bg-size-200"></div>
-              <div className="relative bg-background rounded-lg p-6">
-                <div className="flex items-center space-x-4 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-purple-600/10 flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-purple-600" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-lg">Available for Work</h4>
-                    <p className="text-foreground/70 text-sm">Currently accepting new projects</p>
-                  </div>
-                </div>
-                <p className="text-foreground/80">
-                  Looking for a developer to bring your ideas to life? I'm currently available for freelance work and
-                  new opportunities.
-                </p>
-              </div>
-            </motion.div>
+
           </motion.div>
 
           <motion.div
@@ -256,10 +224,12 @@ export function ContactSection({ t }: ContactSectionProps) {
               </div>
 
               <div>
-                <GlowingButton fullWidth>
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
+                <GlowingButton
+                  fullWidth
+                  type="submit"
+                  disabled={isSubmitting}
+                >
+                  <div
                     className="w-full flex items-center justify-center space-x-2 font-mono"
                   >
                     {isSubmitting ? (
@@ -292,7 +262,7 @@ export function ContactSection({ t }: ContactSectionProps) {
                         <Send className="w-4 h-4" />
                       </span>
                     )}
-                  </button>
+                  </div>
                 </GlowingButton>
 
                 {submitSuccess && (

@@ -30,18 +30,29 @@ export function TechCategories({ technologies, t }: TechCategoriesProps) {
     <div className="w-full">
       {/* Pestañas de categorías */}
       <div className="flex flex-wrap justify-center gap-2 mb-8">
-        {categories.map((category) => (
-          <button
+        {["all", "frontend", "backend", "devops", "tools"].map((category) => (
+          <motion.button
             key={category}
             onClick={() => setActiveCategory(category)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+            className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-full ${
               activeCategory === category
-                ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/20'
-                : 'bg-foreground/5 hover:bg-foreground/10 text-foreground/80'
+                ? "text-white"
+                : "text-foreground/60 hover:text-foreground"
             }`}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            {t.about.techCategories[category] || category}
-          </button>
+            {activeCategory === category && (
+              <motion.div
+                layoutId="category-pill"
+                className="absolute inset-0 bg-gradient-to-r from-purple-600 to-indigo-500 rounded-full"
+                transition={{ type: "spring", stiffness: 380, damping: 30 }}
+              />
+            )}
+            <span className="relative z-10">
+              {t.projects.techCategories[category as keyof typeof t.projects.techCategories] || category}
+            </span>
+          </motion.button>
         ))}
       </div>
       

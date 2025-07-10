@@ -1,20 +1,19 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, type HTMLMotionProps } from "framer-motion"
 import { useState, type ReactNode } from "react"
 
-interface GlowingButtonProps {
+interface GlowingButtonProps extends HTMLMotionProps<"button"> {
   children: ReactNode
-  onClick?: () => void
   fullWidth?: boolean
 }
 
-export function GlowingButton({ children, onClick, fullWidth = false }: GlowingButtonProps) {
+export function GlowingButton({ children, fullWidth = false, ...props }: GlowingButtonProps) {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
     <motion.button
-      onClick={onClick}
+      {...props}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       whileHover={{ scale: 1.02 }}

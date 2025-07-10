@@ -1,0 +1,12 @@
+# Allow all user agents to crawl the site
+User-agent: *
+Allow: /
+
+# Disallow crawling of Next.js build artifacts and other private folders
+Disallow: /_next/
+Disallow: /api/
+Disallow: /public/
+Disallow: /scripts/
+
+# Point to the sitemap
+Sitemap: https://danielochoa.vercel.app/sitemap.xml 

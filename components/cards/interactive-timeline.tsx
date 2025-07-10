@@ -16,17 +16,17 @@ export function InteractiveTimeline({ language }: TimelineProps) {
     {
       id: 1,
       title: language === "en" ? "Software Engineering" : "Ingeniería de Software",
-      company: language === "en" ? "Self-employed" : "Independiente",
+      company: language === "en" ? "Student" : "Politecnico Grancolombiano",
       period: language === "en" ? "2025 - Present" : "2025 - Presente",
       description:
         language === "en"
-          ? "Working as a software engineer, focusing on developing innovative solutions and implementing modern technologies."
-          : "Trabajando como ingeniero de software, enfocado en desarrollar soluciones innovadoras e implementar tecnologías modernas.",
-      icon: <Briefcase className="w-5 h-5" />,
+          ? "Currently studying Software Engineering, focusing on learning modern technologies and developing practical projects to build a strong foundation in software development."
+          : "Actualmente estudiando Ingeniería de Software, enfocándome en aprender tecnologías modernas y desarrollar proyectos prácticos para construir una base sólida en desarrollo de software.",
+      icon: <GraduationCap className="w-5 h-5" />,
       achievements: [
-        language === "en" ? "Developing custom software solutions" : "Desarrollando soluciones de software personalizadas",
-        language === "en" ? "Implementing modern web applications" : "Implementando aplicaciones web modernas",
-        language === "en" ? "Continuous learning and skill development" : "Aprendizaje continuo y desarrollo de habilidades",
+        language === "en" ? "Learning modern web technologies" : "Aprendiendo tecnologías web modernas",
+        language === "en" ? "Building practical projects" : "Construyendo proyectos prácticos",
+        language === "en" ? "Developing programming skills" : "Desarrollando habilidades de programación",
       ],
       technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
       image: "/work-experience-1.jpg?width=600&height=400&query=modern office tech team",

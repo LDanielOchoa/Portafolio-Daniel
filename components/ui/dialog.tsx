@@ -108,6 +108,19 @@ const DialogDescription = React.forwardRef<
 ))
 DialogDescription.displayName = DialogPrimitive.Description.displayName
 
+const VisuallyHidden = React.forwardRef<
+  HTMLElement,
+  React.ComponentPropsWithoutRef<"span">
+>(({ ...props }, ref) => {
+  return (
+    <DialogPrimitive.VisuallyHidden asChild>
+      <span {...props} ref={ref as React.Ref<HTMLSpanElement>} />
+    </DialogPrimitive.VisuallyHidden>
+  )
+})
+VisuallyHidden.displayName = "VisuallyHidden"
+
+
 export {
   Dialog,
   DialogPortal,
@@ -119,4 +132,5 @@ export {
   DialogFooter,
   DialogTitle,
   DialogDescription,
+  VisuallyHidden,
 }

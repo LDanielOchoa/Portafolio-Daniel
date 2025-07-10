@@ -1,3 +1,5 @@
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@200,400,700,500,600,300&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -50,14 +52,6 @@
 }
 
 /* Fonts */
-@font-face {
-  font-family: "ClashDisplay";
-  src: url("/fonts/ClashDisplay-Variable.woff2") format("woff2");
-  font-weight: 200 700;
-  font-display: swap;
-  font-style: normal;
-}
-
 /* Base styles */
 html {
   scroll-behavior: smooth;
@@ -322,12 +316,6 @@ p {
 
 .dark .gradient-border::before {
   background: linear-gradient(45deg, #a78bfa, #818cf8, #c4b5fd, #6366f1);
-}
-
-/* Dot pattern */
-.dot-pattern {
-  background-image: radial-gradient(rgba(147, 51, 234, 0.2) 1px, transparent 1px);
-  background-size: 20px 20px;
 }
 
 /* Wavy divider */

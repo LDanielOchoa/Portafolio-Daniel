@@ -79,7 +79,7 @@ export function HeroSection({ t, handleScroll }: HeroSectionProps) {
       {/* Background elements with improved effects */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 opacity-40">
-          <HeroCanvas />
+          {/* <HeroCanvas /> */}
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/60 to-background"></div>
 

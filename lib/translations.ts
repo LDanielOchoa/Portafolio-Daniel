@@ -21,38 +21,29 @@ export const translations = {
     },
     about: {
       title: "About Me",
-      subtitle: "Who am I?",
-      paragraph1:
-        "I'm a frontend developer passionate about creating intuitive and efficient user experiences. With a strong foundation in modern web technologies, I build applications that are both functional and user-friendly.",
-      paragraph2:
-        "My expertise includes Next.js, TypeScript, TailwindCSS, and database integration. I specialize in developing enterprise-level applications with a focus on performance, accessibility, and clean code practices.",
-      experience: "Months Experience",
-      projects: "Projects Completed",
-      clients: "Satisfied Clients",
-      satisfaction: "Satisfaction Rate",
-      available: "Available for new projects",
-      downloadCv: "Download CV",
-      techStack: "Technologies I Work With",
-      workImages: "Work & Process",
-      services: "My Services",
-      techCategories: {
-        all: "All",
-        languages: "Languages",
-        frontend: "Frontend",
-        backend: "Backend & DB",
-        devops: "DevOps & Cloud",
-        monitoring: "Monitoring",
-        tools: "Tools",
-        os: "OS"
-      }
+      subtitle: "A passionate developer creating modern web experiences.",
+      paragraph1: "Hello! I'm Daniel, a Full-Stack Developer with a passion for building beautiful and functional web applications. My journey in technology started with a deep curiosity for how things work, which led me to the world of programming.",
+      paragraph2: "I specialize in the complete development cycle, from conception and design to deployment and maintenance. I love tackling complex challenges and turning ideas into high-quality, scalable digital solutions.",
+      storyTitle: "My Story",
+      techSkills: "Tech Skills",
+      tools: "Tools",
+      traitsTitle: "I'd describe myself as...",
+      quote: "My goal is to create digital experiences that combine exceptional functionality with elegant and accessible designs.",
+      personalityTags: ["Creative", "Innovative", "Detail-oriented", "Problem Solver", "Adaptable"]
     },
     projects: {
-      title: "My Projects",
-      description:
-        "A selection of my most recent work. Each project represents unique challenges that I've approached with technical expertise and attention to user experience.",
-      projectDescription:
-        "A brief description of the project, highlighting the technologies used and the challenges overcome.",
-      viewMore: "View More Projects",
+      title: "Projects",
+      subtitle: "Some of the projects I've worked on.",
+      techStack: "Tech Stack",
+      livePreview: "Live Preview",
+      viewCode: "View Code",
+      techCategories: {
+        all: "All",
+        frontend: "Frontend",
+        backend: "Backend",
+        devops: "DevOps",
+        tools: "Tools",
+      }
     },
     testimonials: {
       title: "Testimonials",
@@ -115,6 +106,7 @@ export const translations = {
       theme: "Theme",
       language: "Language",
       downloadCV: "Download CV",
+      title: "Menu"
     },
   },
   es: {
@@ -140,37 +132,29 @@ export const translations = {
     },
     about: {
       title: "Sobre Mí",
-      subtitle: "¿Quién soy?",
-      paragraph1:
-        "Soy un desarrollador frontend apasionado por crear experiencias de usuario intuitivas y eficientes. Con una sólida base en tecnologías web modernas, construyo aplicaciones que son tanto funcionales como fáciles de usar.",
-      paragraph2:
-        "Mi experiencia incluye Next.js, TypeScript, TailwindCSS e integración con bases de datos. Me especializo en desarrollar aplicaciones empresariales con un enfoque en rendimiento, accesibilidad y prácticas de código limpio.",
-      experience: "Meses de Experiencia",
-      projects: "Proyectos Completados",
-      clients: "Clientes Satisfechos",
-      satisfaction: "Tasa de Satisfacción",
-      available: "Disponible para nuevos proyectos",
-      downloadCv: "Descargar CV",
-      workImages: "Trabajo y Proceso",
-      services: "Mis Servicios",
-      techCategories: {
-        all: "Todas",
-        languages: "Lenguajes",
-        frontend: "Frontend",
-        backend: "Backend & BD",
-        devops: "DevOps & Cloud",
-        monitoring: "Monitoreo",
-        tools: "Herramientas",
-        os: "Sistemas Operativos"
-      }
+      subtitle: "Un desarrollador apasionado creando experiencias web modernas.",
+      paragraph1: "¡Hola! Soy Daniel, un Desarrollador Full-Stack con una pasión por construir aplicaciones web hermosas y funcionales. Mi viaje en la tecnología comenzó con una profunda curiosidad por cómo funcionan las cosas, lo que me llevó al mundo de la programación.",
+      paragraph2: "Me especializo en el ciclo completo de desarrollo, desde la concepción y el diseño hasta la implementación y el mantenimiento. Me encanta enfrentar desafíos complejos y convertir ideas en soluciones digitales de alta calidad y escalables.",
+      storyTitle: "Mi Historia",
+      techSkills: "Habilidades Técnicas",
+      tools: "Herramientas",
+      traitsTitle: "Me describiría como...",
+      quote: "Mi objetivo es crear experiencias digitales que combinen funcionalidad excepcional con diseños elegantes y accesibles.",
+      personalityTags: ["Creativo", "Innovador", "Detallista", "Resolutivo", "Adaptable"]
     },
     projects: {
-      title: "Mis Proyectos",
-      description:
-        "Una selección de mis trabajos más recientes. Cada proyecto representa desafíos únicos que he abordado con experiencia técnica y atención a la experiencia del usuario.",
-      projectDescription:
-        "Una breve descripción del proyecto, destacando las tecnologías utilizadas y los desafíos superados.",
-      viewMore: "Ver Más Proyectos",
+      title: "Proyectos",
+      subtitle: "Algunos de los proyectos en los que he trabajado.",
+      techStack: "Tecnologías",
+      livePreview: "Ver Demo",
+      viewCode: "Ver Código",
+      techCategories: {
+        all: "Todos",
+        frontend: "Frontend",
+        backend: "Backend",
+        devops: "DevOps",
+        tools: "Herramientas",
+      }
     },
     testimonials: {
       title: "Testimonios",
@@ -224,7 +208,8 @@ export const translations = {
       dark: "Oscuro",
       light: "Claro",
       system: "Sistema",
-      english: "Español",
+      english: "Inglés",
+      spanish: "Español",
     },
     sidebar: {
       navigation: "Navegación",
@@ -232,6 +217,7 @@ export const translations = {
       theme: "Tema",
       language: "Idioma",
       downloadCV: "Descargar CV",
+      title: "Menú"
     },
   },
 }

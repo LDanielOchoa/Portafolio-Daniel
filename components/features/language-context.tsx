@@ -8,31 +8,36 @@ type Language = "en" | "es"
 interface LanguageContextType {
   language: Language
   toggleLanguage: () => void
+  setLanguage: (language: Language) => void
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguage] = useState<Language>("en")
+  const [language, setLanguageState] = useState<Language>("en")
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
     const savedLanguage = localStorage.getItem("language")
     if (savedLanguage === "es" || savedLanguage === "en") {
-      setLanguage(savedLanguage)
+      setLanguageState(savedLanguage)
     }
   }, [])
 
-  const toggleLanguage = () => {
-    const newLanguage = language === "en" ? "es" : "en"
-    setLanguage(newLanguage)
+  const setLanguage = (newLanguage: Language) => {
+    setLanguageState(newLanguage)
     if (mounted) {
       localStorage.setItem("language", newLanguage)
     }
   }
 
-  return <LanguageContext.Provider value={{ language, toggleLanguage }}>{children}</LanguageContext.Provider>
+  const toggleLanguage = () => {
+    const newLanguage = language === "en" ? "es" : "en"
+    setLanguage(newLanguage)
+  }
+
+  return <LanguageContext.Provider value={{ language, toggleLanguage, setLanguage }}>{children}</LanguageContext.Provider>
 }
 
 export function useLanguage() {
