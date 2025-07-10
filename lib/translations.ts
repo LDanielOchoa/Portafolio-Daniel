@@ -64,6 +64,7 @@ export const translations = {
       getInTouch: "Contact Information",
       contactText:
         "Feel free to reach out if you're looking for a developer, have a question, or just want to connect.",
+      formNotAvailable: "The contact form is currently not available. Please reach out to me directly via email.",
       email: "Email",
       location: "Location",
       socials: "Social Profiles",
@@ -175,6 +176,7 @@ export const translations = {
       getInTouch: "Información de Contacto",
       contactText:
         "No dudes en contactarme si estás buscando un desarrollador, tienes una pregunta o simplemente quieres conectar.",
+      formNotAvailable: "El formulario de contacto no está disponible actualmente. Por favor, contáctame directamente por correo electrónico.",
       email: "Correo",
       location: "Ubicación",
       socials: "Perfiles Sociales",
